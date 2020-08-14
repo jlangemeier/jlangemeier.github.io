@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article>
+    <h1 class="article-title">
+        <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+        title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
+    </h1>
+    <section class="article-details">
+        <div>
+            <div class="published-on">
+                <strong>Published:</strong> <time class="published" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+            </div>
+            {% if article.modified %}
+            <div class="modified-on">
+                <strong>Modified:</strong> <time class="modified" datetime="{{ article.modified.isoformat() }}">{{ article.locale_modified }}</time>
+            </div>
+            {% endif %}
+            {% if article.category %}
+            <div class="category">
+                <strong>Category:</strong> <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+            </div>
+            {% endif %}
+            {% if article.tags %}
+            <div class="tags">
+                <strong>Tags:</strong>
+                {% for tag in article.tags %}
+                    <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </section>
+    <section class="article-content">
+        {{ article.content }}
+    </section>
+</article>
+{% endblock %}

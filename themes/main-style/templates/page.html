@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - {{ page.title }}{% endblock %}
+
+{% block content %}
+<article>
+    <h1 class="page-title">
+        <a href="{{ SITEURL }}/{{ page.url }}" rel="bookmark"
+        title="Permalink to {{ page.title|striptags }}">{{ page.title }}</a>
+    </h1>
+    <section class="page-details">
+        <div>
+            {% if page.modified %}
+            <div class="modified-on">
+                <strong>Last Modified On:</strong> <time class="modified" datetime="{{ page.modified.isoformat() }}">{{ page.locale_modified }}</time>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+    <section class="page-content">
+        {{ page.content }}
+    </section>
+</article>
+{% endblock %}

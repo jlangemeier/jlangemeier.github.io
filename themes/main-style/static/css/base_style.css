@@ -1,0 +1,273 @@
+/* Variables */
+:root {
+    --grey-lightest: rgba(200, 200, 200, 1);
+    --color-lighter: rgba(115, 121, 99, 0.5);
+    --color-light: rgba(87, 89, 82, 1);
+    --color-dark: rgba(74, 76, 68, 1);
+    --color-darker: rgba(60, 62, 55, 1);
+    --color-darkest: rgba(44, 45, 39, 1);
+
+    --main-text-style: 'Source Sans Pro';
+    --header-text-style: 'Markazi Text';
+}
+
+/* Base Site Details */
+body {
+    margin: 0px auto;
+    max-width: 1024px;
+    background-color: var(--grey-lightest, #CCCCCC);
+    color: var(--color-darkest, #222222);
+}
+
+/* Font Details */
+body {
+    font-family: var(--main-text-style), sans-serif;
+    font-size: 1rem;
+    line-height: 1.33;
+}
+
+h1, h2, h3, h4, h5, h6,
+#site-title, #site-subtitle {
+    font-family: var(--header-text-style), serif;
+    margin: 1rem 0 0 0;
+    line-height: 1.1;
+}
+
+h1, #site-title { font-size: 2rem; }
+h2, #site-subtitle { font-size: 1.5rem; }
+h3 { font-size: 1.33rem; }
+h4, h5, h6 { font-size: 1.25rem; }
+
+p {
+    margin: 0.5rem 0 0 0.5rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-dark, #444444);
+}
+
+a:hover, a:active {
+    color: var(--color-darkest, #222222);
+}
+
+article div a {
+    font-weight: 600;
+}
+
+.nav-item {
+    font-weight: 800;
+    letter-spacing: 0.05rem;
+    color: var(--color-darkest, #222222);
+}
+
+.nav-item:hover, .nav-item:active {
+    color: var(--color-dark, #444444);
+}
+
+#site-title {
+    font-weight: 800;
+    letter-spacing: 0.1rem;
+    margin: 0;
+    display: block;
+}
+
+#site-subtitle {
+    font-weight: 600;
+    letter-spacing: 0.05rem;
+    margin: 0 0 0 0.5rem;
+    display: block;
+}
+
+footer {
+    text-align: center;
+    font-size: 0.75rem;
+}
+
+footer p {
+    margin: 0 0 0 0;
+}
+
+/* Grid/Flex Layout */
+nav {
+    grid-area: navigation;
+    display: flex;
+    align-content: flex-start;
+    flex-direction: row;
+}
+
+aside {
+    grid-area: aside;
+}
+
+main {
+    grid-area: main-text;
+}
+
+header {
+    grid-area: header;
+}
+
+footer {
+    grid-area: footer;
+}
+
+.wrapper {
+    margin: 1rem;
+    display: grid;
+    grid-gap: 0.5rem;
+    grid-template-areas:
+        "header"
+        "navigation"
+        "main-text"
+        "footer"
+}
+
+@media only screen and (min-width: 600px){
+    nav {
+        flex-direction: column;
+        align-content: space-evenly;
+    }
+
+    .wrapper {
+        grid-gap: 1rem 0.5rem;
+        grid-template-columns: 7rem auto;
+        grid-template-areas:
+            "header     header"
+            "navigation main-text"
+            "footer     footer";
+    }
+}
+
+/* Internal Layout */
+main, header, footer, aside, nav {
+    padding: 0.6rem;
+}
+
+main {
+    border-top: 0.2rem solid var(--color-darker, #444444);
+}
+
+main>*:first-child, aside>*:first-child, article>*:first-child {
+    margin-top: 0;
+}
+
+header {
+    border-bottom: 0.2rem solid var(--color-darker, #444444);
+}
+
+footer {
+    border-top: 0.2rem solid var(--color-darker, #444444);
+}
+
+aside {
+    border-top: 0.2rem solid var(--color-darker, #444444);
+}
+
+.nav-item {
+    order: 0;
+    flex-grow: 1;
+    list-style-type: none;
+    padding: 0.2rem;
+    margin: 0.4rem 0.2rem;
+    max-height: 1.5rem;
+    /* Make Fancy Buttons out of the Nav Links */
+    border-radius: 0.5rem;
+    border-left: 0.2rem solid var(--color-darker, #444444);
+    border-right: 0.2rem solid var(--color-darker, #444444);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (min-width: 600px){
+    nav, aside {
+        margin-top: 0.2rem;
+    }
+
+    main {
+        border-left: 0.2rem solid var(--color-darker, #444444);
+    }
+}
+
+/* Article/Page Specific Formatting */
+.article-title, .page-title {
+    font-weight: 600;
+    letter-spacing: 0.05rem;
+}
+
+.article-details {
+    display: block;
+    margin: 10px 10px;
+    max-width: 290px;
+    border-left: 0.2rem solid var(--color-light, #444444);
+    border-right: 0.2rem solid var(--color-light, #444444);
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.page-details {
+    display: block;
+    margin: 10px 10px;
+    max-width: 180px;
+    border-left: 0.2rem solid var(--color-light, #444444);
+    border-right: 0.2rem solid var(--color-light, #444444);
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.article-details>div, .page-details>div {
+    margin: 2px 0px;
+}
+
+.published-on, .modified-on, .category, .tags, .authors {
+    font-size: 0.8rem;
+}
+
+.author {
+    display: inline-block;
+}
+
+/* Lists of Pages/Articles */
+.articles {
+    display: flex;
+    align-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.article-entry {
+    flex-basis: 100%;
+    margin: 0px 10px;
+}
+
+.post-info time, .post-info .author {
+    font-size: 0.8rem;
+}
+
+.entry-body {
+    border-left: 0.2rem solid var(--color-light, #444444);
+    border-right: 0.2rem solid var(--color-light, #444444);
+    border-radius: 0.5rem;
+    padding: 0.1rem 0.5rem;
+    margin-top: 0.1rem;
+}
+
+.entry-content>p {
+    margin: 0;
+}
+
+/* Paginator */
+.paginator {
+    text-align: center;
+}
+
+.paginator a {
+    font-size: 1.4rem;
+    font-weight: bolder;
+}
+
+.paginator span {
+    font-size: 1.2rem;
+    font-weight: bold;
+}

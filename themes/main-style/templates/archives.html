@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - Archives{% endblock %}
+
+{% block content %}
+<h1>Archives for {{ SITENAME }}</h1>
+
+{% for year, year_group in dates | groupby('date.year') | reverse %}
+    {% for month, month_group in year_group | groupby('date.month') | reverse %}
+        <h2>{{ (month_group|first).date | strftime('%B %Y') }}</h2>
+        <section class="articles">
+        {% for article in month_group %}
+            <section class="article-entry">
+                <section class="entry-header">
+                    <h3 class="entry-title">
+                        <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
+                    </h3>
+                </section>
+                <section class="entry-body">
+                    <section class="entry-content">
+                        {{ article.summary }}
+                    </section>
+                </section>
+            </section>
+        {% endfor %}
+        </section>
+    {% endfor %}
+{% endfor %}
+
+{% endblock %}

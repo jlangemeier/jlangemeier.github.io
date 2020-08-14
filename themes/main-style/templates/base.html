@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{% block html_lang %}{{ DEFAULT_LANG }}{% endblock html_lang %}">
+    <head>
+        <!-- Metadata -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8" />
+        <!-- CSS and Styling -->
+        <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;500;600;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/base_style.css">
+        <!-- Javascript -->
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        {% block head %}
+        <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+        {% endblock %}
+    </head>
+    <body>
+        <div class="wrapper">
+            <!-- Header: Site Name/Info -->
+            <header>
+                <span id="site-title">{{ SITENAME }}</span>
+                <span id="site-subtitle">{{ SITESUBTITLE }}</span>
+            </header>
+            <!-- Primary Site Navigation -->
+            <nav>
+                {% for title, link in MENUITEMS %}
+                <a class="nav-item" href="{{ SITEURL }}/{{ link }}">{{ title }}</a>
+                {% endfor %}
+            </nav>
+            <!-- Main Content: The Important Words and their other stuff -->
+            <main>
+                {% block content %}
+                {% endblock %}
+            </main>
+            <footer>
+                <p>All thought &amp; opinions are my own and don't reflect those of my employer... blah blah blah</p>
+                <p><strong>&copy; 2020 &ndash; Whenever</strong></p>
+            </footer>
+        </div>
+    </body>
+</html>
