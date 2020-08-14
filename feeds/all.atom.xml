@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Imitation Code</title><link href="jlangemeier.github.io/" rel="alternate"></link><link href="jlangemeier.github.io%5Cfeeds/all.atom.xml" rel="self"></link><id>jlangemeier.github.io/</id><updated>2020-08-14T12:00:00-06:00</updated><subtitle>Personal Blog of Jeff Langemeier</subtitle><entry><title>Building a blog site</title><link href="jlangemeier.github.io%5Cposts/building-the-blog.html" rel="alternate"></link><published>2020-08-14T12:00:00-06:00</published><updated>2020-08-14T12:00:00-06:00</updated><author><name>Jeff Langemeier</name></author><id>tag:None,2020-08-14:jlangemeier.github.io\posts/building-the-blog.html</id><summary type="html">&lt;p&gt;Design decisions, and setting up an environment so that I can "just write."&lt;/p&gt;</summary><content type="html">&lt;h2&gt;A Website to Call My Own&lt;/h2&gt;
+&lt;p&gt;I wanted a simple, clean design setup that was both accessible and reasonably nice looking on as many devices as possible.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The site needed to be able to handle showing code blocks and &lt;span class="math"&gt;\(\LaTeX\)&lt;/span&gt; markup.&lt;ul&gt;
+&lt;li&gt;Preferrably something with a highlighter for code blocks and embeddable mathjax support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;The design should be minimalist, leaning on brutalist&lt;ul&gt;
+&lt;li&gt;Minimize code footprint by minimizing usage of javascript, fontawesome, css frameworks, etc&lt;/li&gt;
+&lt;li&gt;As much control of the design as possible (no commercial CMS - Wordpress, Wix, Squarespace, etc)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Writing and updating pages should be simple&lt;ul&gt;
+&lt;li&gt;WYSIWYG editors can be a pain for inserting high quality code blocks and math&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Works within a toolchain that I'm used to&lt;ul&gt;
+&lt;li&gt;I'm used to working with &lt;span class="math"&gt;\(\LaTeX\)&lt;/span&gt; in a text editor&lt;/li&gt;
+&lt;li&gt;I'm familiar with reStructuredText and markdown formats&lt;/li&gt;
+&lt;li&gt;I'm comfortable with Git, Python, &amp;amp; the SysAdmin/DevOps components of a single server deployment&lt;/li&gt;
+&lt;li&gt;I don't need the weight of Django or Flask&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These requirements really narrowed down how I would be able to serve my website; and after doing some digging, the best setup for all of this with the most minimal learning curve was going to be doing a python based, static site generator that serves the site through Github Pages.  I'd narrowed it down to Pelican &amp;amp; Nikola, and while Nikola looks like it may be more extensible, I went with Pelican due to familiarity with their templating engine.&lt;/p&gt;
+&lt;h3&gt;Using Pelican&lt;/h3&gt;
+&lt;p&gt;Building out the custom HTML templating and css was the biggest portion of work; along with learning about configuration of Pelican.&lt;/p&gt;
+&lt;h3&gt;Using Github Pages&lt;/h3&gt;
+&lt;p&gt;I'm apparently an idiot, and this was harder than any other peices of implementation... even though the instructions for creating a GitHub user page are clear, and it's extremely obvious in the Pelican docs that I'm syncing the output folder with the git repository that I create called &lt;user&gt;.github.io.&lt;/p&gt;
+&lt;h3&gt;Using Markdown&lt;/h3&gt;
+&lt;p&gt;Whee Markdown, it's easy, consistant, and light weight; if I get squirly I may switch over to ReStructuredText but I'm lazy, and Markdown meets most of my use cases.&lt;/p&gt;
+&lt;h3&gt;Other Stuff&lt;/h3&gt;
+&lt;p&gt;There's other things too, but I'm working on combatting some personal tendancies about "not publishing anything until it's perfect."  So, I guess it's time to hit publish.  I'll maybe write a part two about accessibility and responsive design.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="web-design"></category><category term="tech"></category><category term="writing"></category><category term="web-design"></category></entry></feed>

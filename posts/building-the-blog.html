@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Metadata -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8" />
+        <!-- CSS and Styling -->
+        <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;500;600;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../theme/css/base_style.css">
+        <!-- Javascript -->
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <title>Imitation Code</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <!-- Header: Site Name/Info -->
+            <header>
+                <span id="site-title">Imitation Code</span>
+                <span id="site-subtitle">Personal Blog of Jeff Langemeier</span>
+            </header>
+            <!-- Primary Site Navigation -->
+            <nav>
+                <a class="nav-item" href="../">Home</a>
+                <a class="nav-item" href="../archives.html">Words</a>
+                <a class="nav-item" href="../">Code</a>
+                <a class="nav-item" href="../pages/about.html">About</a>
+            </nav>
+            <!-- Main Content: The Important Words and their other stuff -->
+            <main>
+<article>
+    <h1 class="article-title">
+        <a href="../posts/building-the-blog.html" rel="bookmark"
+        title="Permalink to Building a blog site">Building a blog site</a>
+    </h1>
+    <section class="article-details">
+        <div>
+            <div class="published-on">
+                <strong>Published:</strong> <time class="published" datetime="2020-08-14T12:00:00-06:00">14.Aug.2020</time>
+            </div>
+            <div class="modified-on">
+                <strong>Modified:</strong> <time class="modified" datetime="2020-08-14T12:00:00-06:00">14.Aug.2020</time>
+            </div>
+            <div class="category">
+                <strong>Category:</strong> <a href="../category/web-design.html">web-design</a>
+            </div>
+            <div class="tags">
+                <strong>Tags:</strong>
+                    <a href="../tag/tech.html">tech</a>
+                    <a href="../tag/writing.html">writing</a>
+                    <a href="../tag/web-design.html">web-design</a>
+            </div>
+        </div>
+    </section>
+    <section class="article-content">
+        <h2>A Website to Call My Own</h2>
+<p>I wanted a simple, clean design setup that was both accessible and reasonably nice looking on as many devices as possible.</p>
+<ul>
+<li>The site needed to be able to handle showing code blocks and <span class="math">\(\LaTeX\)</span> markup.<ul>
+<li>Preferrably something with a highlighter for code blocks and embeddable mathjax support</li>
+</ul>
+</li>
+<li>The design should be minimalist, leaning on brutalist<ul>
+<li>Minimize code footprint by minimizing usage of javascript, fontawesome, css frameworks, etc</li>
+<li>As much control of the design as possible (no commercial CMS - Wordpress, Wix, Squarespace, etc)</li>
+</ul>
+</li>
+<li>Writing and updating pages should be simple<ul>
+<li>WYSIWYG editors can be a pain for inserting high quality code blocks and math</li>
+</ul>
+</li>
+<li>Works within a toolchain that I'm used to<ul>
+<li>I'm used to working with <span class="math">\(\LaTeX\)</span> in a text editor</li>
+<li>I'm familiar with reStructuredText and markdown formats</li>
+<li>I'm comfortable with Git, Python, &amp; the SysAdmin/DevOps components of a single server deployment</li>
+<li>I don't need the weight of Django or Flask</li>
+</ul>
+</li>
+</ul>
+<p>These requirements really narrowed down how I would be able to serve my website; and after doing some digging, the best setup for all of this with the most minimal learning curve was going to be doing a python based, static site generator that serves the site through Github Pages.  I'd narrowed it down to Pelican &amp; Nikola, and while Nikola looks like it may be more extensible, I went with Pelican due to familiarity with their templating engine.</p>
+<h3>Using Pelican</h3>
+<p>Building out the custom HTML templating and css was the biggest portion of work; along with learning about configuration of Pelican.</p>
+<h3>Using Github Pages</h3>
+<p>I'm apparently an idiot, and this was harder than any other peices of implementation... even though the instructions for creating a GitHub user page are clear, and it's extremely obvious in the Pelican docs that I'm syncing the output folder with the git repository that I create called <user>.github.io.</p>
+<h3>Using Markdown</h3>
+<p>Whee Markdown, it's easy, consistant, and light weight; if I get squirly I may switch over to ReStructuredText but I'm lazy, and Markdown meets most of my use cases.</p>
+<h3>Other Stuff</h3>
+<p>There's other things too, but I'm working on combatting some personal tendancies about "not publishing anything until it's perfect."  So, I guess it's time to hit publish.  I'll maybe write a part two about accessibility and responsive design.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+    </section>
+</article>
+            </main>
+            <footer>
+                <p>All thought &amp; opinions are my own and don't reflect those of my employer... blah blah blah</p>
+                <p><strong>&copy; 2020 &ndash; Whenever</strong></p>
+            </footer>
+        </div>
+    </body>
+</html>
